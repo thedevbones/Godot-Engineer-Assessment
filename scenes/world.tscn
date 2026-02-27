@@ -23,6 +23,11 @@ operation = 2
 use_collision = true
 size = Vector3(29, 29, 29)
 
+[node name="DoorCutout" type="CSGBox3D" parent="Factory" unique_id=1217245353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -13, -14.75)
+operation = 2
+size = Vector3(3, 3, 0.5)
+
 [node name="Player" parent="." unique_id=1907204377 instance=ExtResource("1_nnsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
