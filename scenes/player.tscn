@@ -16,3 +16,6 @@ shape = SubResource("CapsuleShape3D_u8vuu")
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=439345098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_g2els")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1887402432]
+target_position = Vector3(0, 0, -3)

@@ -43,3 +43,5 @@ environment = SubResource("Environment_nnsk1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1422136406]
 transform = Transform3D(0.49999997, 0.22414388, -0.8365163, 0, 0.9659258, 0.25881904, 0.86602545, -0.1294095, 0.48296288, 0, 12, 0)
+
+[node name="Key" type="RigidBody3D" parent="." unique_id=128578909]
