@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://fyt0b4iodxl2" path="res://scenes/player.tscn" id="1_nnsk1"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
+
+[sub_resource type="Sky" id="Sky_rwgxs"]
+sky_material = SubResource("ProceduralSkyMaterial_nnsk1")
+
+[sub_resource type="Environment" id="Environment_nnsk1"]
+background_mode = 2
+sky = SubResource("Sky_rwgxs")
+
 [node name="World" type="Node3D" unique_id=449571004]
 
 [node name="Factory" type="CSGBox3D" parent="." unique_id=978265250]
@@ -16,3 +25,9 @@ size = Vector3(29, 29, 29)
 
 [node name="Player" parent="." unique_id=1907204377 instance=ExtResource("1_nnsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1251743555]
+environment = SubResource("Environment_nnsk1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1422136406]
+transform = Transform3D(0.49999997, 0.22414388, -0.8365163, 0, 0.9659258, 0.25881904, 0.86602545, -0.1294095, 0.48296288, 0, 12, 0)
