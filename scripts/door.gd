@@ -2,7 +2,7 @@
 extends "res://scripts/grabbable.gd"
 
 @export var hinge : HingeJoint3D
-@export var swing_strength: float = 100.0
+@export var swing_strength: float = 1000.0
 var unlocked := false
 
 func _ready() -> void:

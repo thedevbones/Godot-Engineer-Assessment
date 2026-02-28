@@ -18,6 +18,11 @@ sky = SubResource("Sky_rwgxs")
 albedo_texture = ExtResource("1_rwgxs")
 uv1_scale = Vector3(8, 8, 8)
 
+[sub_resource type="BoxMesh" id="BoxMesh_k0juu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k0juu"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
 [node name="World" type="Node3D" unique_id=449571004]
 
 [node name="Player" parent="." unique_id=1907204377 instance=ExtResource("1_nnsk1")]
@@ -41,3 +46,12 @@ collision_layer = 3
 collision_mask = 3
 size = Vector3(50, 1, 50)
 material = SubResource("StandardMaterial3D_k0juu")
+
+[node name="Box" type="RigidBody3D" parent="." unique_id=1234051440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -3)
+
+[node name="BoxMesh" type="MeshInstance3D" parent="Box" unique_id=1830043883]
+mesh = SubResource("BoxMesh_k0juu")
+
+[node name="BoxCollision" type="CollisionShape3D" parent="Box" unique_id=722260667]
+shape = SubResource("ConvexPolygonShape3D_k0juu")

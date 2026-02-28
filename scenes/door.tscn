@@ -47,7 +47,6 @@ mesh = SubResource("BoxMesh_uvdjg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.05, 0)
 collision_layer = 3
 collision_mask = 3
-mass = 0.1
 script = ExtResource("1_uvdjg")
 hinge = NodePath("../Hinge")
 
