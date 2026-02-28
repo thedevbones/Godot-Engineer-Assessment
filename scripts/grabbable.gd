@@ -1,15 +1,14 @@
 extends RigidBody3D
 
-@export var hold_strength: float = 20.0
+@export var hold_strength: float = 100.0
 @export var max_speed: float = 10.0
-
 @export var held_linear_damp: float = 10.0
 @export var held_angular_damp: float = 10.0
-
-@export var rotation_strength: float = 10.0
+@export var rotation_strength: float = 100.0
 
 var _held := false
 var _hold_point: Marker3D = null
+var _camera: Camera3D = null
 
 var _original_linear_damp: float
 var _original_angular_damp: float
@@ -29,6 +28,7 @@ func interact(hold_point: Marker3D) -> void:
 func _grab(hold_point: Marker3D) -> void:
 	_held = true
 	_hold_point = hold_point
+	_camera = hold_point.get_parent() as Camera3D
 
 	linear_damp = held_linear_damp
 	angular_damp = held_angular_damp
@@ -39,7 +39,7 @@ func _grab(hold_point: Marker3D) -> void:
 func _release() -> void:
 	_held = false
 	_hold_point = null
-
+	_camera = null
 	linear_damp = _original_linear_damp
 	angular_damp = _original_angular_damp
 	gravity_scale = _original_gravity_scale
@@ -60,22 +60,8 @@ func _physics_process(delta: float) -> void:
 	linear_velocity = linear_velocity.lerp(desired_vel, 12.0 * delta)
 
 	# Rotation
-	var camera = _hold_point.get_parent() as Camera3D
-	var to_player: Vector3 = (camera.global_position - global_position).normalized()
+	var target_rotation: Basis = Basis.looking_at(_camera.global_transform.origin - global_transform.origin, Vector3.UP)
+	var to_target_rotation: Basis = target_rotation * global_transform.basis.inverse()
+	var desired_angular_velocity: Vector3 = to_target_rotation.get_euler() * rotation_strength
 
-	# desired orientation looking at player
-	var target_basis = Basis.looking_at(to_player, Vector3.UP)
-
-	var current_quat = global_transform.basis.get_rotation_quaternion()
-	var target_quat = target_basis.get_rotation_quaternion()
-
-	var rotation_delta = target_quat * current_quat.inverse()
-
-	var axis = rotation_delta.get_axis()
-	var angle = rotation_delta.get_angle()
-
-	if angle > 0.001:
-		var desired_ang_vel = axis * angle * rotation_strength
-		angular_velocity = angular_velocity.lerp(desired_ang_vel, 10.0 * delta)
-	else:
-		angular_velocity = angular_velocity.lerp(Vector3.ZERO, 10.0 * delta)
+	angular_velocity = angular_velocity.lerp(desired_angular_velocity, 12.0 * delta)

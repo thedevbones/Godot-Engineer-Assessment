@@ -5,6 +5,7 @@ extends Camera3D
 @onready var raycast = $RayCast3D
 @onready var hold_point = $HoldPoint
 
+var held_object: Node = null
 var rotation_velocity := Vector2.ZERO
 var camera_input := Vector2.ZERO
 var sensitivity := 0.1
@@ -30,9 +31,14 @@ func _process(delta: float) -> void:
 
 func interact() -> void:
 	raycast.force_raycast_update()
+	if held_object:
+		held_object.interact(hold_point)
+		held_object = null
+		return
 	if not raycast.is_colliding():
 		return
 	var collider := raycast.get_collider() as Node
 	if not collider.has_method("interact"):
 		return
 	collider.interact(hold_point)
+	held_object = collider
