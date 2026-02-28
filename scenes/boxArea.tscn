@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://baas41826a4g6"]
 
 [ext_resource type="Script" uid="uid://c6hphy6v7ukdn" path="res://scripts/boxArea.gd" id="1_i0tsy"]
+[ext_resource type="AudioStream" uid="uid://dk3kv7tkmqvl6" path="res://sounds/forceField.mp3" id="2_lwtfd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71j4m"]
 
@@ -17,6 +18,10 @@ debug_color = Color(0.8198897, 0.0018095237, 0.96789545, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.5, 0)
 light_energy = 5.0
 spot_angle = 15.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=1118514419]
+stream = ExtResource("2_lwtfd")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bi4aicqxy87qb"]
 
 [ext_resource type="Script" uid="uid://do7ggvykh5nfc" path="res://scripts/keyArea.gd" id="1_qykci"]
+[ext_resource type="AudioStream" uid="uid://823vir0q8cpu" path="res://sounds/unlock.mp3" id="2_815dj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qfnet"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -23,6 +24,10 @@ omni_range = 1.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=656596086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 mesh = SubResource("BoxMesh_i7141")
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=371698375]
+stream = ExtResource("2_815dj")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
