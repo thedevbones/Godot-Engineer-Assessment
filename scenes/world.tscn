@@ -21,7 +21,7 @@ uv1_scale = Vector3(8, 8, 8)
 [node name="World" type="Node3D" unique_id=449571004]
 
 [node name="Player" parent="." unique_id=1907204377 instance=ExtResource("1_nnsk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1251743555]
 environment = SubResource("Environment_nnsk1")
@@ -33,7 +33,7 @@ transform = Transform3D(0.49999997, 0.22414388, -0.8365163, 0, 0.9659258, 0.2588
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, 1.75, -6)
 
 [node name="Key" parent="." unique_id=1564372155 instance=ExtResource("3_4wyf3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -4)
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=585634348]
 use_collision = true
