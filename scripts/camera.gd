@@ -3,6 +3,7 @@ extends Camera3D
 @onready var head = get_parent() as Node3D
 @onready var body = head.get_parent() as CharacterBody3D
 @onready var raycast = $RayCast3D
+@onready var hold_point = $HoldPoint
 
 var rotation_velocity := Vector2.ZERO
 var camera_input := Vector2.ZERO
@@ -34,4 +35,4 @@ func interact() -> void:
 	var collider := raycast.get_collider() as Node
 	if not collider.has_method("interact"):
 		return
-	collider.interact()
+	collider.interact(hold_point)

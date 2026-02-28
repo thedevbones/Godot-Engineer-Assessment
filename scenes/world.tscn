@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fyt0b4iodxl2" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Texture2D" uid="uid://bu1qmnjvv582" path="res://textures/prototype/Light/texture_08.png" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://cqvns055pb7wa" path="res://textures/prototype/Green/texture_10.png" id="3_4wyf3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnsk1"]
 albedo_texture = ExtResource("1_rwgxs")
@@ -16,11 +17,37 @@ sky_material = SubResource("ProceduralSkyMaterial_nnsk1")
 background_mode = 2
 sky = SubResource("Sky_rwgxs")
 
+[sub_resource type="GDScript" id="GDScript_4wyf3"]
+script/source = "extends \"res://scripts/grabbable.gd\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0juu"]
+albedo_texture = ExtResource("3_4wyf3")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwgxs"]
+material = SubResource("StandardMaterial3D_k0juu")
+size = Vector3(0.5, 0.25, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4wyf3"]
+points = PackedVector3Array(0.25, 0.125, 0.125, 0.25, 0.125, -0.125, -0.25, 0.125, 0.125, 0.25, -0.125, 0.125, 0.25, -0.125, -0.125, -0.25, 0.125, -0.125, -0.25, -0.125, 0.125, -0.25, -0.125, -0.125)
+
 [node name="World" type="Node3D" unique_id=449571004]
 
 [node name="Factory" type="CSGBox3D" parent="." unique_id=978265250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(30, 30, 30)
 material = SubResource("StandardMaterial3D_nnsk1")
 
@@ -45,3 +72,14 @@ environment = SubResource("Environment_nnsk1")
 transform = Transform3D(0.49999997, 0.22414388, -0.8365163, 0, 0.9659258, 0.25881904, 0.86602545, -0.1294095, 0.48296288, 0, 12, 0)
 
 [node name="Key" type="RigidBody3D" parent="." unique_id=128578909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+collision_layer = 2
+collision_mask = 2
+mass = 0.1
+script = SubResource("GDScript_4wyf3")
+
+[node name="KeyMesh" type="MeshInstance3D" parent="Key" unique_id=249812485]
+mesh = SubResource("BoxMesh_rwgxs")
+
+[node name="KeyCollision" type="CollisionShape3D" parent="Key" unique_id=1185410195]
+shape = SubResource("ConvexPolygonShape3D_4wyf3")
