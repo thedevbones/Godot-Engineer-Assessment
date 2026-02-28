@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b0a0l86c01uu1"]
+
+[ext_resource type="Script" uid="uid://c8s8jk1y8rrnf" path="res://scripts/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://cqvns055pb7wa" path="res://textures/prototype/Green/texture_10.png" id="2_wy8tx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0juu"]
+albedo_texture = ExtResource("2_wy8tx")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwgxs"]
+material = SubResource("StandardMaterial3D_k0juu")
+size = Vector3(0.5, 0.25, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4wyf3"]
+points = PackedVector3Array(0.25, 0.125, 0.125, 0.25, 0.125, -0.125, -0.25, 0.125, 0.125, 0.25, -0.125, 0.125, 0.25, -0.125, -0.125, -0.25, 0.125, -0.125, -0.25, -0.125, 0.125, -0.25, -0.125, -0.125)
+
+[node name="Key" type="RigidBody3D" unique_id=1564372155]
+collision_layer = 2
+collision_mask = 2
+mass = 0.1
+script = ExtResource("1_fttkb")
+
+[node name="KeyMesh" type="MeshInstance3D" parent="." unique_id=349536795]
+mesh = SubResource("BoxMesh_rwgxs")
+
+[node name="KeyCollision" type="CollisionShape3D" parent="." unique_id=1153511205]
+shape = SubResource("ConvexPolygonShape3D_4wyf3")

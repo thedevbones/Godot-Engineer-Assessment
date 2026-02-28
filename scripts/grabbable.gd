@@ -26,6 +26,7 @@ func interact(hold_point: Marker3D) -> void:
 		_grab(hold_point)
 
 func _grab(hold_point: Marker3D) -> void:
+	print("Grabbing object: ", self.name)
 	_held = true
 	_hold_point = hold_point
 	_camera = hold_point.get_parent() as Camera3D
@@ -37,6 +38,7 @@ func _grab(hold_point: Marker3D) -> void:
 	sleeping = false
 
 func _release() -> void:
+	print("Releasing object: ", self.name)
 	_held = false
 	_hold_point = null
 	_camera = null
