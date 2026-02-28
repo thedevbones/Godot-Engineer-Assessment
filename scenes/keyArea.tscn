@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bi4aicqxy87qb"]
+
+[ext_resource type="Script" uid="uid://do7ggvykh5nfc" path="res://scripts/keyArea.gd" id="1_qykci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfnet"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7141"]
+size = Vector3(0.5, 0.5, 0.1)
+
+[node name="KeyArea" type="Area3D" unique_id=331934984]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_qykci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=988320213]
+shape = SubResource("BoxShape3D_qfnet")
+
+[node name="AreaLight" type="OmniLight3D" parent="." unique_id=1404700597]
+light_energy = 0.31
+omni_range = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=656596086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+mesh = SubResource("BoxMesh_i7141")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
