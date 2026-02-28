@@ -4,6 +4,7 @@ extends Camera3D
 @onready var body = head.get_parent() as CharacterBody3D
 @onready var raycast = $RayCast3D
 @onready var hold_point = $HoldPoint
+@onready var pickup_sfx = $Pickup
 
 var held_object: Node = null
 var rotation_velocity := Vector2.ZERO
@@ -34,6 +35,7 @@ func interact() -> void:
 	if held_object:
 		held_object.interact(hold_point)
 		held_object = null
+		play_sfx(0.9)
 		return
 	if not raycast.is_colliding():
 		return
@@ -41,4 +43,10 @@ func interact() -> void:
 	if not collider.has_method("interact"):
 		return
 	collider.interact(hold_point)
+	play_sfx(1.0)
+	pickup_sfx.play()
 	held_object = collider
+
+func play_sfx(pitch: float) -> void:
+	pickup_sfx.pitch_scale = pitch
+	pickup_sfx
