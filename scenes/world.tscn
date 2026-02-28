@@ -97,8 +97,9 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.2
 [node name="Box" parent="." unique_id=388529242 instance=ExtResource("5_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -2)
 
-[node name="BoxArea" parent="." unique_id=1157965974 instance=ExtResource("6_qfnet")]
+[node name="BoxArea" parent="." unique_id=1157965974 node_paths=PackedStringArray("force_field") instance=ExtResource("6_qfnet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5.5)
+force_field = NodePath("../ForceField")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1251743555]
 environment = SubResource("Environment_nnsk1")
