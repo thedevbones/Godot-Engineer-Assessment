@@ -24,4 +24,4 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="HoldPoint" type="Marker3D" parent="Head/Camera3D" unique_id=1985292607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
