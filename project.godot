@@ -15,6 +15,11 @@ run/main_scene="uid://njp2ess75uhs"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+box=""
+key=""
+
 [input]
 
 walk_forward={

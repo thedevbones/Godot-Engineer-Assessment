@@ -1,3 +1,4 @@
+# heavily modifed version of https://www.youtube.com/watch?v=KLXW3Puyj9o&t=184s
 extends RigidBody3D
 
 @export var hold_strength: float = 100.0

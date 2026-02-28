@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://baas41826a4g6"]
+
+[ext_resource type="Script" uid="uid://c6hphy6v7ukdn" path="res://scripts/boxArea.gd" id="1_i0tsy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71j4m"]
+
+[node name="BoxArea" type="Area3D" unique_id=1157965974]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_i0tsy")
+
+[node name="AreaCollision" type="CollisionShape3D" parent="." unique_id=276511757]
+shape = SubResource("BoxShape3D_71j4m")
+debug_color = Color(0.8198897, 0.0018095237, 0.96789545, 0.41960785)
+
+[node name="AreaLight" type="SpotLight3D" parent="." unique_id=1885431042]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.5, 0)
+light_energy = 5.0
+spot_angle = 15.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

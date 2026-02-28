@@ -5,9 +5,6 @@ extends "res://scripts/grabbable.gd"
 @export var swing_strength: float = 1000.0
 var unlocked := false
 
-func _ready() -> void:
-	unlock() # delete me
-
 func interact(hold_point: Marker3D) -> void:
 	if not unlocked:
 		return
