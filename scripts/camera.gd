@@ -44,9 +44,8 @@ func interact() -> void:
 		return
 	collider.interact(hold_point)
 	play_sfx(1.0)
-	pickup_sfx.play()
 	held_object = collider
 
 func play_sfx(pitch: float) -> void:
 	pickup_sfx.pitch_scale = pitch
-	pickup_sfx
+	pickup_sfx.play()
