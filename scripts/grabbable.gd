@@ -50,14 +50,16 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# Position
-	var target_pos: Vector3 = _hold_point.global_position
-	var to_target: Vector3 = target_pos - global_position
+	var target_position: Vector3 = _hold_point.global_position
+	var to_target: Vector3 = target_position - global_position
 
-	var desired_vel: Vector3 = to_target * hold_strength
-	if desired_vel.length() > max_speed:
-		desired_vel = desired_vel.normalized() * max_speed
+	var desired_velocity: Vector3 = to_target * hold_strength
+	desired_velocity -= linear_velocity * 6.0 
 
-	linear_velocity = linear_velocity.lerp(desired_vel, 12.0 * delta)
+	if desired_velocity.length() > max_speed:
+		desired_velocity = desired_velocity.normalized() * max_speed
+
+	linear_velocity = linear_velocity.lerp(desired_velocity, 12.0 * delta)
 
 	# Rotation
 	var target_rotation: Basis = Basis.looking_at(_camera.global_transform.origin - global_transform.origin, Vector3.UP)
