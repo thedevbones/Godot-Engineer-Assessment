@@ -58,4 +58,24 @@ func _physics_process(delta: float) -> void:
 		desired_vel = desired_vel.normalized() * max_speed
 
 	linear_velocity = linear_velocity.lerp(desired_vel, 12.0 * delta)
+
+	# Rotation
+	var camera = _hold_point.get_parent() as Camera3D
+	var to_player: Vector3 = (camera.global_position - global_position).normalized()
+
+	# desired orientation looking at player
+	var target_basis = Basis.looking_at(to_player, Vector3.UP)
+
+	var current_quat = global_transform.basis.get_rotation_quaternion()
+	var target_quat = target_basis.get_rotation_quaternion()
+
+	var rotation_delta = target_quat * current_quat.inverse()
+
+	var axis = rotation_delta.get_axis()
+	var angle = rotation_delta.get_angle()
+
+	if angle > 0.001:
+		var desired_ang_vel = axis * angle * rotation_strength
+		angular_velocity = angular_velocity.lerp(desired_ang_vel, 10.0 * delta)
+	else:
 		angular_velocity = angular_velocity.lerp(Vector3.ZERO, 10.0 * delta)
